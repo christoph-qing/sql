@@ -205,5 +205,7 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 
 
 ```
-Your thoughts...
+As the article suggests, the value systems embedded in databases and administrative systems reflect the norms of the government or institution that manages them. NADRA’s design, for example, assumes that every individual has two married parents,but many other assumptions are less obvious. Administrative systems are often optimized for efficiency. Individuals who fit the assumed norms experience the fastest and easiest access, while outliers face greater difficulties. For instance, processes like visa applications or tax filing may be straightforward for domestic or “typical” citizens, but can become complex and frustrating for international students or immigrants.
+
+As societies become more aware and accepting of diversity, seemingly simple assumptions, like requiring two married parents should be easier to identify and correct. Yet many differences among individuals exist on a spectrum rather than as dichotomous, much like the concerns with generative AI over-representing Western or male perspectives. Since all systems are designed by humans with limited foresight and resources, administrative systems that prioritize efficiency inevitably impose additional burdens on marginalized populations. What we can do might just be remain vigilant about the value systems encoded in these systems and consciously acknowledge their existence.
 ```
