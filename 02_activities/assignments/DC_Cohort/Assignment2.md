@@ -14,10 +14,10 @@
     * Open a private window in your browser. Copy and paste the link to your pull request into the address bar. Make sure you can see your pull request properly. This helps the technical facilitator and learning support staff review your submission easily.
 
 Checklist:
-- [ ] Create a branch called `assignment-two`.
-- [ ] Ensure that the repository is public.
-- [ ] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
-- [ ] Verify that the link is accessible in a private browser window.
+- [X] Create a branch called `assignment-two`.
+- [X] Ensure that the repository is public.
+- [X] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
+- [X] Verify that the link is accessible in a private browser window.
 
 If you encounter any difficulties or have questions, please don't hesitate to reach out to our team via our Slack. Our Technical Facilitators and Learning Support staff are here to help you navigate any challenges.
 
@@ -55,6 +55,9 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 
 ```
 Your answer...
+Option 1 is store one active address for each customer. Once it is updated it overwrite the previous one. Customer to address is always one to one. This would be type 1.
+
+Option 2 is update the address but also keep all the previous ones. Customer to address is one to many where one address is marked as the active address. This would be type 2.
 ```
 
 ***
@@ -184,4 +187,7 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 ```
 Your thoughts...
+I recognized two major ethical issues. One is that the seemingly machine learning is actually powered by human, which created bias by society norms and social values of people who are annotating the data set that the machines are trained on. Another issue is that people who spend time annotating the data set are not recognized or seen by us. They are often underpaid and do not get the credit in training such model.
+
+AI relies on people manually annotating data, even if we describe it as machine learning then marketing AI as autonomous erases human labour. It is not transparent to people, or at least, not very transparent to those who are not within academia and industry that recognize these ideas do not come from an automated recognition. Then what machine thinks is a representation of a certain type of worldview, as what is beautiful and ugly. However, I don't know whether it can be improved, for example, by training on all information on internet globally. Although it will still be biased to those ideologies that associate with fewer internet access, at least it covers a higher population. I think it sort of still make sense that a machine created by people holds similar worldview of the people who created it. We just need to recognize that it represents "a view" but not "the view". Again, it is interesting that the author talks about sewing, that it is a manual, feminized, and undervalued labor, much like data labeling.
 ```
