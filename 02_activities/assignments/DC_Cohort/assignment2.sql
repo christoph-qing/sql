@@ -46,6 +46,11 @@ FROM customer_purchases;
 SELECT 
     customer_id,
     market_date,
+    ROW_NUMBER() OVER (
+        PARTITION BY customer_id
+        ORDER BY market_date
+    ) AS visit_number
+FROM customer_purchases;
     DENSE_RANK() OVER (
         PARTITION BY customer_id
         ORDER BY market_date
@@ -54,6 +59,16 @@ FROM customer_purchases
 GROUP BY customer_id, market_date
 ORDER BY customer_id, market_date;
 
+SELECT 
+    customer_id,
+    market_date,
+    DENSE_RANK() OVER (
+        PARTITION BY customer_id
+        ORDER BY market_date
+    ) AS visit_number
+FROM customer_purchases
+GROUP BY customer_id, market_date
+ORDER BY customer_id, market_date;
 
 /* 2. Reverse the numbering of the query from a part so each customer’s most recent visit is labeled 1, 
 then write another query that uses this one as a subquery (or temp table) and filters the results to 
@@ -74,6 +89,7 @@ WHERE visit_number = 1;
 
 /* 3. Using a COUNT() window function, include a value along with each row of the 
 customer_purchases table that indicates how many different times that customer has purchased that product_id. */
+
 SELECT 
     customer_id,
     product_id,
@@ -159,11 +175,15 @@ Remember, CROSS JOIN will explode your table rows, so CROSS JOIN should likely b
 Think a bit about the row counts: how many distinct vendors, product names are there (x)?
 How many customers are there (y). 
 Before your final group by you should have the product of those two queries (x*y).  */
+
 SELECT 
     v.vendor_name,
     p.product_name,
     SUM(5 * vi.original_price) AS total_potential_revenue
-FROM vendor_inventory vi
+FROM (
+    SELECT DISTINCT vendor_id, product_id, original_price
+    FROM vendor_inventory
+) vi
 JOIN vendor v ON vi.vendor_id = v.vendor_id
 JOIN product p ON vi.product_id = p.product_id
 CROSS JOIN (
@@ -264,3 +284,5 @@ SET current_quantity = COALESCE(
      LIMIT 1
     ), 0
 );
+
+
