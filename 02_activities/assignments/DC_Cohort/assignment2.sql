@@ -164,7 +164,10 @@ SELECT
     v.vendor_name,
     p.product_name,
     SUM(5 * vi.original_price) AS total_potential_revenue
-FROM vendor_inventory vi
+FROM (
+    SELECT DISTINCT vendor_id, product_id, original_price
+    FROM vendor_inventory
+) vi
 JOIN vendor v ON vi.vendor_id = v.vendor_id
 JOIN product p ON vi.product_id = p.product_id
 CROSS JOIN (
