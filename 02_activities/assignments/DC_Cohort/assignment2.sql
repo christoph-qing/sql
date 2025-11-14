@@ -34,6 +34,14 @@ You can either display all rows in the customer_purchases table, with the counte
 each new market date for each customer, or select only the unique market dates per customer 
 (without purchase details) and number those visits. 
 HINT: One of these approaches uses ROW_NUMBER() and one uses DENSE_RANK(). */
+SELECT 
+    customer_id,
+    market_date,
+    ROW_NUMBER() OVER (
+        PARTITION BY customer_id
+        ORDER BY market_date
+    ) AS visit_number
+FROM customer_purchases;
 
 SELECT 
     customer_id,
@@ -43,6 +51,13 @@ SELECT
         ORDER BY market_date
     ) AS visit_number
 FROM customer_purchases;
+    DENSE_RANK() OVER (
+        PARTITION BY customer_id
+        ORDER BY market_date
+    ) AS visit_number
+FROM customer_purchases
+GROUP BY customer_id, market_date
+ORDER BY customer_id, market_date;
 
 SELECT 
     customer_id,
@@ -83,6 +98,7 @@ SELECT
         PARTITION BY customer_id, product_id
     ) AS times_purchased
 FROM customer_purchases;
+
 
 -- String manipulations
 /* 1. Some product names in the product table have descriptions like "Jar" or "Organic". 
@@ -177,6 +193,7 @@ CROSS JOIN (
 GROUP BY v.vendor_name, p.product_name
 ORDER BY v.vendor_name, p.product_name;
 
+
 -- INSERT
 /*1.  Create a new table "product_units". 
 This table will contain only products where the `product_qty_type = 'unit'`. 
@@ -189,6 +206,7 @@ SELECT
     CURRENT_TIMESTAMP AS snapshot_timestamp
 FROM product
 WHERE product_qty_type = 'unit';
+
 
 /*2. Using `INSERT`, add a new row to the product_units table (with an updated timestamp). 
 This can be any product you desire (e.g. add another record for Apple Pie). */
@@ -237,6 +255,7 @@ Third, SET current_quantity = (...your select statement...), remembering that WH
 Finally, make sure you have a WHERE statement to update the right row, 
 	you'll need to use product_units.product_id to refer to the correct row within the product_units table. 
 When you have all of these components, you can run the update statement. */
+
 
 ALTER TABLE product_units
 ADD COLUMN current_quantity INT;
